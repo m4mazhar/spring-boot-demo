@@ -2,6 +2,7 @@ package com.dailtycodebuffer.springbootdemo.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
@@ -45,6 +46,18 @@ public class EmployeeServiceImpl implements EmployeeService {
 				.filter(i -> i.getEmployeeId().equals(id))
 				.findFirst()
 				.orElseThrow(() -> new EmployeeNotFoundException("Employee not found with id: " + id));
+	}
+
+
+	@Override
+	public String deleteEmplyeeById(String id) {
+		Employee emp = employees
+		.stream()
+		.filter(i -> i.getEmployeeId().equals(id))
+		.findFirst().get();
+		
+		employees.remove(emp);
+		return "DELETED";
 	}
 
 }

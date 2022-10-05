@@ -24,7 +24,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 	@ExceptionHandler(Exception.class)
 	@ResponseBody
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-	public ErrorMessage handler(Exception exception) {
+	public ErrorMessage genericExceptionHandler(Exception exception) {
 		return new ErrorMessage(HttpStatus.INTERNAL_SERVER_ERROR, exception.getMessage());
 	}
 }
